@@ -1,6 +1,7 @@
 {
   "name": "export-xlsx",
   "version": "0.1.5",
+  "type": "module",
   "description": "export excel",
   "main": "index.js",
   "scripts": {
