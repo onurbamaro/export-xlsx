@@ -4,7 +4,6 @@
   "description": "export excel",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -20,8 +19,5 @@
   "dependencies": {
     "exceljs": "^4.3.0",
     "file-saver": "^2.0.2"
-  },
-  "devDependencies": {
-    "mocha": "^3.2.0"
   }
 }

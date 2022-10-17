@@ -1,5 +1,6 @@
 import FileSaver from 'file-saver';
 import ExcelJS from 'exceljs/dist/exceljs.min.js';
+import fs from 'fs'
 
 // Default border style
 export const borderStyle = {
@@ -599,7 +600,13 @@ export default class ExcelExport {
     FileSaver.saveAs(blob, `${filename}.xlsx`);
   }
 
-  async downloadExcel(settings = {}, data = []) {
+  async generateNode(wb, filename) {
+    const buf = await wb.xlsx.writeBuffer();
+    fs.createWriteStream(`./relatorios/${filename}.xlsx`).write(buf)
+  }
+
+
+  async downloadExcel(settings = {}, data = [], mode = "node") {
     const wb = new ExcelJS.Workbook();
     const { fileName, workSheets } = settings;
     // Create worksheets
@@ -611,6 +618,11 @@ export default class ExcelExport {
       this.createWorkSheet(data, wsSetting, wsIndex);
     });
     // Generate excel file
-    await this.generateExcel(wb, fileName);
+    if (mode === "node"){
+
+    } else {
+      await this.generateExcel(wb, fileName);
+    }
+   
   }
 }
