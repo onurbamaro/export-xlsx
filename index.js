@@ -602,7 +602,7 @@ export default class ExcelExport {
 
   async generateNode(wb, filename) {
     const buf = await wb.xlsx.writeBuffer();
-    fs.createWriteStream(`./relatorios/${filename}.xlsx`).write(buf)
+    fs.createWriteStream(`${filename}.xlsx`).write(buf)
   }
 
 
